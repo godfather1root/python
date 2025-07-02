@@ -23,4 +23,4 @@ jobs:
         run: docker build -t yourdockerhubusername/simple-app .
 
       - name: Push Docker image
-        run: docker push hacked01/simple-app.py
+        run: docker push hacked01/simple-app
