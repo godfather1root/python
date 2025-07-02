@@ -20,7 +20,10 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t yourdockerhubusername/simple-app .
+        run: docker build -t hacked01/simple-app .
+
+      - name: List local Docker images
+        run: docker images
 
       - name: Push Docker image
         run: docker push hacked01/simple-app
