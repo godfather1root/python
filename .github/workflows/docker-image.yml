@@ -32,5 +32,5 @@ jobs:
         run: docker run --name pythonscript -p 3000:3000 hacked01/simple-app
 
       - name: List running Docker containers
-        run: docker ps
+        run: docker ps -a
 
