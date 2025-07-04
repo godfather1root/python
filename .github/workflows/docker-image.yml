@@ -27,3 +27,6 @@ jobs:
 
       - name: Push Docker image
         run: docker push hacked01/simple-app
+
+      - name: Run the image
+        run: docker run --name pythonscript -p 3000:3000 hacked01/simple-app
