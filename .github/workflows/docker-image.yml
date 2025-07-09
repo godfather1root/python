@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t hacked01/simple-app:latest .
+        run: docker build -t hacked01/simple-app1:latest .
 
       - name: List local Docker images
         run: docker images
@@ -28,7 +28,7 @@ jobs:
       - name: Trivyscan
         uses: aquasecurity/trivy-action@0.17.0
         with:
-          image-ref: 'hacked01/simple-app'
+          image-ref: 'hacked01/simple-app1'
           format: 'json'
           output: trivy.json
           exit-code: '0'
@@ -43,11 +43,11 @@ jobs:
         
       - name: Push Docker image
         run: |
-            docker push hacked01/simple-app:latest
+            docker push hacked01/simple-app1:latest
             
 
       - name: Run the image
-        run: docker run --name pythonscript -p 3000:3000 hacked01/simple-app
+        run: docker run --name pythonscript -p 3000:3000 hacked01/simple-app1:latest
 
       - name: List running Docker containers
         run: docker ps -a
