@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: docker build -t hacked01/simple-app .
+        run: docker build -t hacked01/simple-app:latest . -t hacked01/simple-app${{ github.sha }}
 
       - name: List local Docker images
         run: docker images
@@ -42,7 +42,9 @@ jobs:
           
         
       - name: Push Docker image
-        run: docker push hacked01/simple-app
+        run: |
+            docker push hacked01/simple-app 
+            hacked01/simple-app${{ github.sha }}
 
       - name: Run the image
         run: docker run --name pythonscript -p 3000:3000 hacked01/simple-app
